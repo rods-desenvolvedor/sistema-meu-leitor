@@ -29,21 +29,23 @@ public class Historia {
 
     
 
-    public Historia(UUID id, String titulo, String descricao, LocalDateTime dataCriacao, Genero genero, Usuario usuario) {
+    public Historia(UUID id, String titulo, String descricao, LocalDateTime dataCriacao, Genero genero, Usuario usuario, List<Capitulo> capitulos) {
         this.id = id;
         this.titulo = titulo;
         this.descricao = descricao;
         this.dataCriacao = dataCriacao;
         this.genero = genero;
         this.usuario = usuario;
+        this.capitulos = capitulos;
     }
 
-     public Historia(String titulo, String descricao, LocalDateTime dataCriacao, Genero genero, Usuario usuario) {
+     public Historia(String titulo, String descricao, LocalDateTime dataCriacao, Genero genero, Usuario usuario, List<Capitulo> capitulos) {
         this.titulo = titulo;
         this.descricao = descricao;
         this.dataCriacao = dataCriacao;
         this.genero = genero;
         this.usuario = usuario;
+        this.capitulos = capitulos;
     }
 
 
@@ -67,6 +69,8 @@ public class Historia {
 
     @OneToMany(mappedBy = "historia", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Capitulo> capitulos = new ArrayList<>();
+
+    
 
 
 
@@ -137,6 +141,18 @@ public class Historia {
 
     public void setUsuario(Usuario usuario) {
         this.usuario = usuario;
+    }
+
+
+
+    public List<Capitulo> getCapitulos() {
+        return capitulos;
+    }
+
+
+
+    public void setCapitulos(List<Capitulo> capitulos) {
+        this.capitulos = capitulos;
     }
 
     
