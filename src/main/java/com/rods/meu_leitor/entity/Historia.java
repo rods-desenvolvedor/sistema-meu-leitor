@@ -2,17 +2,23 @@ package com.rods.meu_leitor.entity;
 
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.UUID;
 
 import com.rods.meu_leitor.entity.enums.Genero;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 
 @Entity
@@ -52,16 +58,21 @@ public class Historia {
     @Column(name = "data_criacao")
     private LocalDateTime dataCriacao;
 
+    @Enumerated(EnumType.STRING)
     private Genero genero;
 
     @ManyToOne
     @JoinColumn(name = "usuario_id", nullable = false)
     private Usuario usuario;
 
+    @OneToMany(mappedBy = "historia", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<Capitulo> capitulos = new ArrayList<>();
+
+
+
     public UUID getId() {
         return id;
     }
-
 
 
     public void setId(UUID id) {
