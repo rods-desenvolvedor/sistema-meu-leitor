@@ -1,11 +1,15 @@
 package com.rods.meu_leitor.entity;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.UUID;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 
 @Entity
@@ -16,19 +20,21 @@ public class Usuario {
 
     
     
-    public Usuario(UUID id, String nomeUsuario, String email, String senha, int idade) {
+    public Usuario(UUID id, String nomeUsuario, String email, String senha, int idade, List<Historia> historias) {
         this.id = id;
         this.nomeUsuario = nomeUsuario;
         this.email = email;
         this.senha = senha;
         this.idade = idade;
+        this.historias = historias;
     }
 
-        public Usuario(String nomeUsuario, String email, String senha, int idade) {
+        public Usuario(String nomeUsuario, String email, String senha, int idade, List<Historia> historias) {
         this.nomeUsuario = nomeUsuario;
         this.email = email;
         this.senha = senha;
         this.idade = idade;
+        this.historias = historias;
     }
 
 
@@ -42,6 +48,8 @@ public class Usuario {
     private String senha;
     private int idade;
 
+    @OneToMany(mappedBy = "usuario", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<Historia> historias = new ArrayList<>();
 
 
 
@@ -101,6 +109,18 @@ public class Usuario {
 
     public void setIdade(int idade) {
         this.idade = idade;
+    }
+
+
+
+    public List<Historia> getHistorias() {
+        return historias;
+    }
+
+
+
+    public void setHistorias(List<Historia> historias) {
+        this.historias = historias;
     }
 
     
