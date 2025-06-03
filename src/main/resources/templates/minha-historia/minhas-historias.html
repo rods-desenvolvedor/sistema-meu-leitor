@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+    <body>
+        <div>
+            <h2>Minhas Historias</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Titulo</th>
+                        <th>Descricao</th>
+                        <th>Data de Criação</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr th:each="historia : ${historias}">
+                        <td th:text="${historia.titulo}"></td>
+                        <td th:text="${historia.descricao}"></td>
+                        <td th:text="${historia.dataCriacao}"></td>
+                        <td><a th:href="@{/minha-historia/{id}(id=${historia.id})}">Continuar Escrevendo</a></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </body>
+</html>
