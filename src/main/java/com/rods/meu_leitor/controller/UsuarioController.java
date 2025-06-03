@@ -9,7 +9,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.rods.meu_leitor.controller.dtos.UsuarioRequestDto;
-import com.rods.meu_leitor.controller.dtos.UsuarioResponseDto;
 import com.rods.meu_leitor.service.UsuarioService;
 
 import jakarta.validation.Valid;
@@ -41,7 +40,7 @@ public class UsuarioController {
         {
             return "usuario/index";
         }
-        
+
         usuarioService.cadastrarUsuario(usuarioRequestDto);
 
         return "redirect:/usuario/";
