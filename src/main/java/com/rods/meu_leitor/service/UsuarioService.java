@@ -3,6 +3,7 @@ package com.rods.meu_leitor.service;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import com.rods.meu_leitor.controller.dtos.UsuarioRequestDto;
@@ -16,10 +17,12 @@ import com.rods.meu_leitor.repository.UsuarioRepository;
 public class UsuarioService {
 
     private final UsuarioRepository usuarioRepository;
+    private final PasswordEncoder passwordEncoder;
 
-    public UsuarioService(UsuarioRepository usuarioRepository)
+    public UsuarioService(UsuarioRepository usuarioRepository, PasswordEncoder passwordEncoder)
     {
         this.usuarioRepository = usuarioRepository;
+        this.passwordEncoder = passwordEncoder;
     }
 
     public UsuarioResponseDto cadastrarUsuario(UsuarioRequestDto usuarioRequestDto)
@@ -31,8 +34,10 @@ public class UsuarioService {
 
         List<Historia> historias = new ArrayList<>();
 
+        String senhaCriptografada = passwordEncoder.encode(usuarioRequestDto.senha());
+
         Usuario usuario = new Usuario(usuarioRequestDto.nomeUsuario(),
-        usuarioRequestDto.email(),usuarioRequestDto.senha(),usuarioRequestDto.idade(), historias);
+        usuarioRequestDto.email(),senhaCriptografada,usuarioRequestDto.idade(), historias);
 
         usuarioRepository.save(usuario);
 
