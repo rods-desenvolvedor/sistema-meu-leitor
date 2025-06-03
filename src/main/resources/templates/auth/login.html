@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+    <body>
+        <h1>Entre na sua conta MeuLeitor</h1>
+        <form method="post" th:action="@{/login}">
+            <div>
+                <label>Email</label>
+                <input type="text" name="username">
+            </div>
+            <div>
+                <label>Senha</label>
+                <input type="password" name="password">
+            </div>
+            <button type="submit">Entrar</button>
+        </form>
+    </body>
+</html>
