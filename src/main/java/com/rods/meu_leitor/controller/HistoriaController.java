@@ -1,7 +1,7 @@
 package com.rods.meu_leitor.controller;
 
 import java.security.Principal;
-import java.util.UUID;
+
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import com.rods.meu_leitor.controller.dtos.UsuarioRequestDto;
+
 import com.rods.meu_leitor.controller.dtos.historiaDto.HistoriaRequestDto;
 import com.rods.meu_leitor.service.HistoriaService;
 

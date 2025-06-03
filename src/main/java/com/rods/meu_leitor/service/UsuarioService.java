@@ -8,7 +8,6 @@ import org.springframework.stereotype.Service;
 
 import com.rods.meu_leitor.controller.dtos.UsuarioRequestDto;
 import com.rods.meu_leitor.controller.dtos.UsuarioResponseDto;
-import com.rods.meu_leitor.entity.Capitulo;
 import com.rods.meu_leitor.entity.Historia;
 import com.rods.meu_leitor.entity.Usuario;
 import com.rods.meu_leitor.repository.UsuarioRepository;
