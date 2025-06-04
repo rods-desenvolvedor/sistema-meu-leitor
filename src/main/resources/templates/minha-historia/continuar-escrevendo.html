@@ -3,6 +3,7 @@
     <body>
         <div>
             <h1 th:text="${historia.titulo}"></h1>
+            <h2><a>Escrever novo capitulo</a></h2>
             <table>
                 <thead>
                     <tr>
@@ -12,7 +13,7 @@
                 <tbody>
                     <tr th:each="capitulo : ${historia.capitulos}">
                         <td th:text="${capitulo.titulo}"></td>
-                        <td><a></a></td>
+                        <td><a th:href="@{/minha-historia/editar/{id}(id=historia.id)}">Editar</a></td>
                     </tr>
                 </tbody>
             </table>

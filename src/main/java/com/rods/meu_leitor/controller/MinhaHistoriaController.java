@@ -42,6 +42,12 @@ public class MinhaHistoriaController {
         return "minha-historia/continuar-escrevendo";
     }
 
+    @GetMapping("/editar/{id}")
+    public String editarCapitulo(@PathVariable UUID id)
+    {
+        return "minha-historia/editar-capitulo";
+    }
+
     @GetMapping("/form-cadastrar")
     public String historia(Model model)
     {
