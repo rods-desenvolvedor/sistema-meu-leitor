@@ -28,7 +28,7 @@ public class UsuarioController {
     public String usuario(Model model)
     {
         model.addAttribute("usuarioRequestDto", new UsuarioRequestDto(null, null, null, null));
-        return "usuario/index";
+        return "auth/cadastrar";
     }
 
 
