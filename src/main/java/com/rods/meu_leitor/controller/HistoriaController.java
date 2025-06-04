@@ -25,24 +25,12 @@ public class HistoriaController {
         this.historiaService = historiaService;
     }
 
-    @GetMapping("/")
-    public String minhasHistorias()
+    @GetMapping("/listar")
+    public String listarTodasAsHistorias()
     {
         return "historia/index";
     }
 
-    @GetMapping("/nova-historia")
-    public String historia(Model model)
-    {
-        model.addAttribute("historiaRequestDto", new HistoriaRequestDto(null, null, null));
-        return "historia/cadastrar";
-    }
-
-    @PostMapping("/cadastrar")
-    public String cadastrarHistoria(@ModelAttribute HistoriaRequestDto historiaRequestDto, Principal principal)
-    {
-        historiaService.cadastrarHistoria(principal.getName(), historiaRequestDto);
-        return "redirect:/historia/";
-    }
+   
     
 }

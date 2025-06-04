@@ -6,9 +6,12 @@ import java.util.UUID;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import com.rods.meu_leitor.controller.dtos.historiaDto.HistoriaRequestDto;
 import com.rods.meu_leitor.service.HistoriaService;
 
 
@@ -37,6 +40,20 @@ public class MinhaHistoriaController {
         System.out.println(id);
         model.addAttribute("historia", historiaService.listarHistoriaPeloId(id));
         return "minha-historia/continuar-escrevendo";
+    }
+
+    @GetMapping("/form-cadastrar")
+    public String historia(Model model)
+    {
+        model.addAttribute("historiaRequestDto", new HistoriaRequestDto(null, null, null));
+        return "minha-historia/cadastrar";
+    }
+
+    @PostMapping("/cadastrar")
+    public String cadastrarHistoria(@ModelAttribute HistoriaRequestDto historiaRequestDto, Principal principal)
+    {
+        historiaService.cadastrarHistoria(principal.getName(), historiaRequestDto);
+        return "redirect:/minha-historia/listar";
     }
 
     
