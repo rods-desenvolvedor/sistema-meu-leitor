@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+    <body>
+        <div>
+            <form th:action="@{/minha-historia/cadastrar}" th:object="${historiaRequestDto}" method="post">
+                <div>
+                    <label>Titulo</label>
+                    <input type="text" th:field="*{titulo}" id="titulo"/>
+                </div>
+                <div>
+                    <label>Descrição</label>
+                    <input type="text" th:field="*{descricao}" id="descricao"/>
+                </div>
+                <div>
+                    <label>Genero</label>
+                    <input type="text" th:field="*{genero}" id="genero"/>
+                </div>
+                <input type="submit" value="Criar Nova Historia"/>
+            </form>
+        </div>
+    </body>
+</html>
