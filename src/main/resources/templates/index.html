@@ -1,12 +1,32 @@
 <!DOCTYPE html>
 <html>
     <head>
+        <meta charset="UTF-8">
         <title>MeuLeitor</title>
+        <link rel="stylesheet" th:href="@{/css/landing-page.css}">
     </head>
-
     <body>
-        <div>
-            <h1>Pagina Inicial - MeuLeitor</h1>
-        </div>
+
+        <nav class="header">
+            <h1 class="titulo-logo">MeuLeitor</h1>
+            <div class="auth">
+                <h3><a th:href="@{/login}">Login</a></h3>
+                <h3><a th:href="@{/usuario/}">Criar Conta</a></h3>
+            </div>
+        </nav>
+
+        <section class=hero>
+            <div>
+                <h1 class="titulo-hero">Bem vindo ao MeuLeitor</h1>
+                <h2>Teste teste teste teste teste teste teste teste testevv</h2>
+                <p>Um projeto de um apaixonado por tecnologia e boas historias. O objetivo é aproximar novos escritores
+                promissores ou qualquer que queira compartilhar suas historias com novos leitores.</p>
+            </div>
+        </section>
+        <footer class="footer">
+            <div>
+                <h1>Feito por: RodsDev</h1>
+            </div>
+        </footer>
     </body>
 </html>
