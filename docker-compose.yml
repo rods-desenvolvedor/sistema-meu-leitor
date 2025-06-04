@@ -5,8 +5,8 @@ services:
     image: postgres
     container_name: container_postgres_meu_leitor
     environment:
-      POSTGRES_USER=usuario
-      POSTGRES_PASSWORD=senha
-      POSTGRES_DB=db_meu_leitor
+      POSTGRES_USER: usuario
+      POSTGRES_PASSWORD: senha
+      POSTGRES_DB: db_meu_leitor
     ports:
       - "5430:5432"
