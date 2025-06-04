@@ -16,7 +16,7 @@ public class SecurityConfig {
     {
         http.authorizeHttpRequests(auth -> auth.requestMatchers("/usuario/cadastrar", "/usuario/", "/login", "/css/**", "/home")
         .permitAll().anyRequest().authenticated()
-        ).formLogin(form -> form.loginPage("/login").defaultSuccessUrl("/home", true).permitAll()
+        ).formLogin(form -> form.loginPage("/login").defaultSuccessUrl("/historia/listar", true).permitAll()
         ).logout(logout -> logout.logoutUrl("/logout").logoutSuccessUrl("/login?logout").permitAll());
 
         return http.build();
