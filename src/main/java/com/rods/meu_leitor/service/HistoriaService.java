@@ -7,6 +7,8 @@ import java.util.UUID;
 
 import org.springframework.stereotype.Service;
 
+import com.rods.meu_leitor.controller.dtos.capituloDto.CapituloRequestDto;
+import com.rods.meu_leitor.controller.dtos.capituloDto.CapituloResponseDto;
 import com.rods.meu_leitor.controller.dtos.historiaDto.HistoriaRequestDto;
 import com.rods.meu_leitor.controller.dtos.historiaDto.HistoriaResponseDto;
 import com.rods.meu_leitor.entity.Capitulo;
@@ -64,6 +66,40 @@ public class HistoriaService {
         .orElseThrow(() -> new RuntimeException("Historia não encontrada"));
 
         return new HistoriaResponseDto(historia);
+    }
+
+    public CapituloResponseDto cadastrarCapitulo(CapituloRequestDto capituloRequestDto, UUID idHistoria)
+    {
+        Historia historia = historiaRepository.findById(idHistoria)
+        .orElseThrow(() -> new RuntimeException("Historia não foi encontrada"));
+
+        Capitulo capitulo = new Capitulo(capituloRequestDto.titulo(), capituloRequestDto.conteudo(), historia);
+
+        capituloRepository.save(capitulo);
+
+        return new CapituloResponseDto(capitulo);
+    }
+
+    public CapituloResponseDto buscarCapituloPeloId(UUID id)
+    {
+        Capitulo capitulo = capituloRepository.findById(id)
+        .orElseThrow(() -> new RuntimeException("Capitulo não foi encontrado"));
+
+        return new CapituloResponseDto(capitulo);
+    }
+
+    public CapituloResponseDto editarCapitulo(UUID id, CapituloRequestDto capituloRequestDto)
+    {
+        Capitulo capitulo = capituloRepository.findById(id)
+        .orElseThrow(() -> new RuntimeException("Capitulo não foi encontrado"));
+        
+
+        capitulo.setTitulo(capituloRequestDto.titulo());
+        capitulo.setConteudo(capituloRequestDto.conteudo());
+
+        capituloRepository.save(capitulo);
+
+        return new CapituloResponseDto(capitulo);
     }
     
 }
