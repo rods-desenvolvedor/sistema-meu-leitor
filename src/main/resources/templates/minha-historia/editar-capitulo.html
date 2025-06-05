@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+  <body>
+    <h2>Editar Capítulo</h2>
+    <form th:action="@{/minha-historia/editar/{id}(id=${capitulo.id})}" method="post">
+      <div>
+        <label for="titulo">Título</label>
+        <input type="text" id="titulo" name="titulo" th:value="${capitulo.titulo}" />
+      </div>
+      <div>
+        <label for="conteudo">Conteúdo</label>
+        <textarea id="conteudo" name="conteudo" th:text="${capitulo.conteudo}"></textarea>
+      </div>
+      <input type="submit" value="Salvar alterações" />
+    </form>
+  </body>
+</html>
