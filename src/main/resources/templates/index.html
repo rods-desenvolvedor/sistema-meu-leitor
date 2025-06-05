@@ -1,32 +1,31 @@
 <!DOCTYPE html>
-<html>
-    <head>
-        <meta charset="UTF-8">
-        <title>MeuLeitor</title>
-        <link rel="stylesheet" th:href="@{/css/landing-page.css}">
-    </head>
-    <body>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>MeuLeitor</title>
+  <link rel="stylesheet" th:href="@{/css/landing-page.css}">
+</head>
+<body>
 
-        <nav class="header">
-            <h1 class="titulo-logo">MeuLeitor</h1>
-            <div class="auth">
-                <h3><a th:href="@{/login}">Login</a></h3>
-                <h3><a th:href="@{/usuario/}">Criar Conta</a></h3>
-            </div>
-        </nav>
+  <header class="navbar">
+    <h1 class="logo">MeuLeitor</h1>
+    <nav class="nav-links">
+      <a th:href="@{/login}">Login</a>
+      <a th:href="@{/usuario/}">Criar Conta</a>
+    </nav>
+  </header>
 
-        <section class=hero>
-            <div>
-                <h1 class="titulo-hero">Bem vindo ao MeuLeitor</h1>
-                <h2>Teste teste teste teste teste teste teste teste testevv</h2>
-                <p>Um projeto de um apaixonado por tecnologia e boas historias. O objetivo é aproximar novos escritores
-                promissores ou qualquer que queira compartilhar suas historias com novos leitores.</p>
-            </div>
-        </section>
-        <footer class="footer">
-            <div>
-                <h1>Feito por: RodsDev</h1>
-            </div>
-        </footer>
-    </body>
+  <main class="hero">
+    <div class="hero-content">
+      <h1>Bem-vindo ao MeuLeitor</h1>
+      <h2>Compartilhe suas histórias com o mundo</h2>
+      <p>Um projeto de um apaixonado por tecnologia e boas histórias. O objetivo é aproximar novos escritores promissores ou qualquer um que queira compartilhar suas narrativas com novos leitores.</p>
+    </div>
+  </main>
+
+  <footer class="footer">
+    <p>Feito por: RodsDev</p>
+  </footer>
+
+</body>
 </html>

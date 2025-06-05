@@ -1,25 +1,42 @@
 <!DOCTYPE html>
-<html>
-    <body>
-        <div>
-            <h2>Minhas Historias</h2>
-            <table>
-                <thead>
-                    <tr>
-                        <th>Titulo</th>
-                        <th>Descricao</th>
-                        <th>Data de Criação</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr th:each="historia : ${historias}">
-                        <td th:text="${historia.titulo}"></td>
-                        <td th:text="${historia.descricao}"></td>
-                        <td th:text="${historia.dataCriacao}"></td>
-                        <td><a th:href="@{/minha-historia/{id}(id=${historia.id})}">Continuar Escrevendo</a></td>
-                    </tr>
-                </tbody>
-            </table>
+<html lang="pt-br" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Minhas Histórias - MeuLeitor</title>
+    <link rel="stylesheet" th:href="@{/css/minhas-historias.css}">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="navbar-content">
+            <h1 class="logo">MeuLeitor</h1>
+            <div class="nav-links">
+                <a th:href="@{/home}">Descobrir Histórias</a>
+                <a th:href="@{/usuario/perfil}">Meu Perfil</a>
+                <a th:href="@{/logout}">Logout</a>
+            </div>
         </div>
-    </body>
+    </nav>
+
+    <main class="main-content">
+        <h2>Minhas Histórias</h2>
+        <table class="historia-table">
+            <thead>
+                <tr>
+                    <th>Título</th>
+                    <th>Descrição</th>
+                    <th>Data de Criação</th>
+                    <th>Ações</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:each="historia : ${historias}">
+                    <td th:text="${historia.titulo}">Título</td>
+                    <td th:text="${historia.descricao}">Descrição</td>
+                    <td th:text="${historia.dataCriacao}">Data</td>
+                    <td><a th:href="@{/minha-historia/{id}(id=${historia.id})}" class="btn-continuar">Continuar</a></td>
+                </tr>
+            </tbody>
+        </table>
+    </main>
+</body>
 </html>

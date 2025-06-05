@@ -1,27 +1,46 @@
 <!DOCTYPE html>
-<html>
-    <body>
-        <h1>Cadastrar novo usuario</h1>
-        <div>
-            <form action="#" th:action="@{/usuario/cadastrar}" th:object="${usuarioRequestDto}" method="post">
-                <div>
-                    <label>Nome de usuario</label>
-                    <input type="text" th:field="*{nomeUsuario}" id="nomeUsuario"/>
-                </div>
-                <div>
-                    <label>Email</label>
-                    <input type="text" th:field="*{email}" id="Email"/>
-                </div>
-                <div>
-                    <label>Senha</label>
-                    <input type="text" th:field="*{senha}" id="Senha"/>
-                </div>
-                <div>
-                    <label>idade</label>
-                    <input type="number" th:field="*{idade}" id="idade"/>
-                </div>
-                <input type="submit" value="Cadastrar"/>
-            </form>
-        </div>
-    </body>
+<html lang="pt-br" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8" />
+  <title>Cadastrar - MeuLeitor</title>
+  <link rel="stylesheet" th:href="@{/css/registro.css}" />
+</head>
+<body>
+  <nav class="navbar">
+    <div class="navbar-content">
+      <h1 class="logo">MeuLeitor</h1>
+      <div class="auth-links">
+        <a th:href="@{/login}">Login</a>
+        <a th:href="@{/usuario/}">Criar Conta</a>
+      </div>
+    </div>
+  </nav>
+
+  <main class="register-container">
+    <h2>Cadastrar novo usuário</h2>
+    <form th:action="@{/usuario/cadastrar}" th:object="${usuarioRequestDto}" method="post">
+      <div class="form-group">
+        <label for="nomeUsuario">Nome de usuário</label>
+        <input type="text" th:field="*{nomeUsuario}" id="nomeUsuario" required />
+      </div>
+
+      <div class="form-group">
+        <label for="email">Email</label>
+        <input type="email" th:field="*{email}" id="email" required />
+      </div>
+
+      <div class="form-group">
+        <label for="senha">Senha</label>
+        <input type="password" th:field="*{senha}" id="senha" required />
+      </div>
+
+      <div class="form-group">
+        <label for="idade">Idade</label>
+        <input type="number" th:field="*{idade}" id="idade" required />
+      </div>
+
+      <button type="submit">Cadastrar</button>
+    </form>
+  </main>
+</body>
 </html>

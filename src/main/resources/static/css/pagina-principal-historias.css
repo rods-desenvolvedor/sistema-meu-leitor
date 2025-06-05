@@ -1,0 +1,59 @@
+/* Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: #121212;
+  color: #ffffff;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  min-height: 100vh;
+}
+
+/* Navbar */
+.navbar {
+  background-color: #1f1f1f;
+  padding: 1rem 2rem;
+}
+
+.navbar-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo {
+  font-size: 1.8rem;
+  color: white;
+}
+
+.nav-links a {
+  margin-left: 1rem;
+  text-decoration: none;
+  color: white;
+  font-weight: bold;
+}
+
+.nav-links a:hover {
+  text-decoration: underline;
+}
+
+/* Main content */
+.main-content {
+  max-width: 800px;
+  margin: 3rem auto;
+  padding: 1rem;
+  text-align: center;
+}
+
+.main-content h2 {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+}
+
+.main-content p {
+  font-size: 1rem;
+  color: #cccccc;
+}

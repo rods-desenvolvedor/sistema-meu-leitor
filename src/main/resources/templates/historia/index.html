@@ -1,16 +1,25 @@
 <!DOCTYPE html>
-<html>
-    <body>
-        <div>
-            <h1>MeuLeitor</h1>
-            <div>
-                <h2><a>Minhas historias</a></h2>
-                <h2><a>Meu Perfil</a></h2>
-                <h2><a>Logout</a></h2>
+<html lang="pt-br" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>MeuLeitor - Página Principal</title>
+    <link rel="stylesheet" th:href="@{/css/pagina-principal-historias.css}">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="navbar-content">
+            <h1 class="logo">MeuLeitor</h1>
+            <div class="nav-links">
+                <a th:href="@{/minha-historia/listar}">Minhas Histórias</a>
+                <a th:href="@{/usuario/perfil}">Meu Perfil</a>
+                <a th:href="@{/logout}">Logout</a>
             </div>
         </div>
-        <div>
-            <h1>Descubra novas historias</h1>
-        </div>
-    </body>
+    </nav>
+
+    <main class="main-content">
+        <h2>Descubra novas histórias</h2>
+        <p>Em breve você poderá usar filtros para encontrar histórias por gênero, autor ou palavras-chave.</p>
+    </main>
+</body>
 </html>

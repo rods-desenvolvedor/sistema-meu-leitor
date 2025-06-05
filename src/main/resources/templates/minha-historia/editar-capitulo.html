@@ -1,17 +1,35 @@
 <!DOCTYPE html>
-<html>
-  <body>
+<html lang="pt-br" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8" />
+  <title>Editar Capítulo</title>
+  <link rel="stylesheet" th:href="@{/css/editar-capitulo.css}" />
+</head>
+<body>
+  <nav class="navbar">
+    <div class="navbar-content">
+      <h1 class="logo">MeuLeitor</h1>
+      <div class="nav-links">
+        <a th:href="@{/home}">Descobrir Histórias</a>
+        <a th:href="@{/minha-historia/listar}">Minhas Histórias</a>
+        <a th:href="@{/logout}">Logout</a>
+      </div>
+    </div>
+  </nav>
+
+  <main class="edit-container">
     <h2>Editar Capítulo</h2>
-    <form th:action="@{/minha-historia/editar/{id}(id=${capitulo.id})}" method="post">
-      <div>
+    <form th:action="@{/minha-historia/editar/{id}(id=${capitulo.id})}" method="post" class="edit-form">
+      <div class="form-group">
         <label for="titulo">Título</label>
-        <input type="text" id="titulo" name="titulo" th:value="${capitulo.titulo}" />
+        <input type="text" id="titulo" name="titulo" th:value="${capitulo.titulo}" required />
       </div>
-      <div>
+      <div class="form-group">
         <label for="conteudo">Conteúdo</label>
-        <textarea id="conteudo" name="conteudo" th:text="${capitulo.conteudo}"></textarea>
+        <textarea id="conteudo" name="conteudo" rows="10" required th:text="${capitulo.conteudo}"></textarea>
       </div>
-      <input type="submit" value="Salvar alterações" />
+      <button type="submit">Salvar Alterações</button>
     </form>
-  </body>
+  </main>
+</body>
 </html>

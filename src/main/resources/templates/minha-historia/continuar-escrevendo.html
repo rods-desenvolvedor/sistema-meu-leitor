@@ -1,22 +1,44 @@
 <!DOCTYPE html>
-<html>
-    <body>
-        <div>
-            <h1 th:text="${historia.titulo}"></h1>
-            <h2><a th:href="@{/minha-historia/form-cadastrar-capitulo/{id}(id=${historia.id})}">Escrever novo capitulo</a></h2>
-            <table>
-                <thead>
-                    <tr>
-                        <th>Titulo do capitulo</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr th:each="capitulo : ${historia.capitulos}">
-                        <td th:text="${capitulo.titulo}"></td>
-                        <td><a th:href="@{/minha-historia/editar/{id}(id=${capitulo.id})}">Editar</a></td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
-    </body>
+<html lang="pt-br" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title th:text="'História: ' + ${historia.titulo}">História</title>
+  <link rel="stylesheet" th:href="@{/css/continuar-escrevendo.css}">
+</head>
+<body>
+  <nav class="navbar">
+    <div class="navbar-content">
+      <h1 class="logo">MeuLeitor</h1>
+      <div class="nav-links">
+        <a th:href="@{/home}">Descobrir Histórias</a>
+        <a th:href="@{/minha-historia/listar}">Minhas Histórias</a>
+        <a th:href="@{/logout}">Logout</a>
+      </div>
+    </div>
+  </nav>
+
+  <main class="main-content">
+    <h2 th:text="${historia.titulo}">Título da História</h2>
+    <div class="acoes">
+      <a th:href="@{/minha-historia/form-cadastrar-capitulo/{id}(id=${historia.id})}" class="btn-novo">Escrever Novo Capítulo</a>
+    </div>
+
+    <table class="capitulo-table">
+      <thead>
+        <tr>
+          <th>Título do Capítulo</th>
+          <th>Ações</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr th:each="capitulo : ${historia.capitulos}">
+          <td th:text="${capitulo.titulo}">Capítulo</td>
+          <td>
+            <a th:href="@{/minha-historia/editar/{id}(id=${capitulo.id})}" class="btn-editar">Editar</a>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </main>
+</body>
 </html>
