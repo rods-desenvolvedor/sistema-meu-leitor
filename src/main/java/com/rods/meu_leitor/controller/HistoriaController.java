@@ -26,8 +26,9 @@ public class HistoriaController {
     }
 
     @GetMapping("/listar")
-    public String listarTodasAsHistorias()
+    public String listarTodasAsHistorias(Model model)
     {
+        model.addAttribute("historias", historiaService.listarTodasAsHistorias());
         return "historia/index";
     }
 
