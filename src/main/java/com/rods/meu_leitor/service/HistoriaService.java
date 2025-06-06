@@ -50,6 +50,13 @@ public class HistoriaService {
         return new HistoriaResponseDto(historiaSalva);
     }
 
+    public List<HistoriaResponseDto> listarTodasAsHistorias()
+    {
+        List<Historia> historias = historiaRepository.findAll();
+
+        return historias.stream().map(HistoriaResponseDto::new).toList();
+    }
+
     public List<HistoriaResponseDto> listarHistoriasUsuarioLogado(String email)
     {
         Usuario usuario = usuarioRepository.findByEmail(email)
