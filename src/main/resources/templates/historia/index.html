@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 <html lang="pt-br" xmlns:th="http://www.thymeleaf.org">
 <head>
-    <meta charset="UTF-8">
+    <meta charset="UTF-8" />
     <title>MeuLeitor - Página Principal</title>
-    <link rel="stylesheet" th:href="@{/css/pagina-principal-historias.css}">
+    <link rel="stylesheet" th:href="@{/css/todas-historias.css}" />
 </head>
 <body>
     <nav class="navbar">
@@ -18,8 +18,19 @@
     </nav>
 
     <main class="main-content">
-        <h2>Descubra novas histórias</h2>
-        <p>Em breve você poderá usar filtros para encontrar histórias por gênero, autor ou palavras-chave.</p>
+        <section class="discover">
+            <h2>Descubra novas histórias</h2>
+            <p>Explore histórias criadas por outros usuários. Em breve, você poderá usar filtros por gênero, autor ou palavras-chave.</p>
+        </section>
+
+        <section class="story-list">
+            <div class="story-card" th:each="historia : ${historias}">
+                <h3 th:text="${historia.titulo}">Título da História</h3>
+                <p th:text="${historia.descricao}">Descrição da história...</p>
+                <small th:text="'Criado em: ' + ${#temporals.format(historia.dataCriacao, 'dd/MM/yyyy')}"></small>
+                <a class="btn" th:href="@{'/minha-historia/' + ${historia.id}}">Ver mais</a>
+            </div>
+        </section>
     </main>
 </body>
 </html>
