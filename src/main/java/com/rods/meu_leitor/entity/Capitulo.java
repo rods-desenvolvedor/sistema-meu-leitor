@@ -2,7 +2,11 @@ package com.rods.meu_leitor.entity;
 
 import java.util.UUID;
 
+import com.rods.meu_leitor.entity.enums.Status;
+
 import jakarta.persistence.Entity;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -18,17 +22,19 @@ public class Capitulo {
 
     
 
-    public Capitulo(UUID id, String titulo, String conteudo, Historia historia) {
+    public Capitulo(UUID id, String titulo, String conteudo, Historia historia, Status status) {
         this.id = id;
         this.titulo = titulo;
         this.conteudo = conteudo;
         this.historia = historia;
+        this.status = status;
     }
 
-      public Capitulo(String titulo, String conteudo, Historia historia) {
+      public Capitulo(String titulo, String conteudo, Historia historia, Status status) {
         this.titulo = titulo;
         this.conteudo = conteudo;
         this.historia = historia;
+        this.status = status;
     }
 
 
@@ -46,6 +52,10 @@ public class Capitulo {
     @JoinColumn(name = "historia_id", nullable = false)
     private Historia historia;
 
+    @Enumerated(EnumType.STRING)
+    private Status status;
+
+    
 
     
 
@@ -83,6 +93,18 @@ public class Capitulo {
 
     public void setHistoria(Historia historia) {
         this.historia = historia;
+    }
+
+
+
+    public Status getStatus() {
+        return status;
+    }
+
+
+
+    public void setStatus(Status status) {
+        this.status = status;
     }
 
     

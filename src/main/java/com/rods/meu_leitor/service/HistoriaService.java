@@ -14,6 +14,7 @@ import com.rods.meu_leitor.controller.dtos.historiaDto.HistoriaResponseDto;
 import com.rods.meu_leitor.entity.Capitulo;
 import com.rods.meu_leitor.entity.Historia;
 import com.rods.meu_leitor.entity.Usuario;
+import com.rods.meu_leitor.entity.enums.Status;
 import com.rods.meu_leitor.repository.CapituloRepository;
 import com.rods.meu_leitor.repository.HistoriaRepository;
 import com.rods.meu_leitor.repository.UsuarioRepository;
@@ -40,9 +41,9 @@ public class HistoriaService {
         
 
         Historia historia  = new Historia(historiaRequestDto.titulo(),
-        historiaRequestDto.descricao(), LocalDateTime.now() , historiaRequestDto.genero(), usuario, new ArrayList<>());
+        historiaRequestDto.descricao(), LocalDateTime.now() , historiaRequestDto.genero(), usuario, new ArrayList<>(), Status.RASCUNHO);
 
-        Capitulo capituloPadrao = new Capitulo("Capitulo 1 - Padrão", "Comece a escrever usa historia", historia);
+        Capitulo capituloPadrao = new Capitulo("Capitulo 1 - Padrão", "Comece a escrever usa historia", historia, Status.RASCUNHO);
         historia.getCapitulos().add(capituloPadrao);
 
         Historia historiaSalva = historiaRepository.save(historia);
@@ -80,7 +81,7 @@ public class HistoriaService {
         Historia historia = historiaRepository.findById(idHistoria)
         .orElseThrow(() -> new RuntimeException("Historia não foi encontrada"));
 
-        Capitulo capitulo = new Capitulo(capituloRequestDto.titulo(), capituloRequestDto.conteudo(), historia);
+        Capitulo capitulo = new Capitulo(capituloRequestDto.titulo(), capituloRequestDto.conteudo(), historia, Status.RASCUNHO);
 
         capituloRepository.save(capitulo);
 

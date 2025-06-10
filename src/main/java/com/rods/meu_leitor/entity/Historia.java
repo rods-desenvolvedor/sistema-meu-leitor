@@ -7,6 +7,7 @@ import java.util.List;
 import java.util.UUID;
 
 import com.rods.meu_leitor.entity.enums.Genero;
+import com.rods.meu_leitor.entity.enums.Status;
 
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
@@ -29,7 +30,7 @@ public class Historia {
 
     
 
-    public Historia(UUID id, String titulo, String descricao, LocalDateTime dataCriacao, Genero genero, Usuario usuario, List<Capitulo> capitulos) {
+    public Historia(UUID id, String titulo, String descricao, LocalDateTime dataCriacao, Genero genero, Usuario usuario, List<Capitulo> capitulos, Status status) {
         this.id = id;
         this.titulo = titulo;
         this.descricao = descricao;
@@ -37,15 +38,17 @@ public class Historia {
         this.genero = genero;
         this.usuario = usuario;
         this.capitulos = capitulos;
+        this.status = status;
     }
 
-     public Historia(String titulo, String descricao, LocalDateTime dataCriacao, Genero genero, Usuario usuario, List<Capitulo> capitulos) {
+     public Historia(String titulo, String descricao, LocalDateTime dataCriacao, Genero genero, Usuario usuario, List<Capitulo> capitulos, Status status) {
         this.titulo = titulo;
         this.descricao = descricao;
         this.dataCriacao = dataCriacao;
         this.genero = genero;
         this.usuario = usuario;
         this.capitulos = capitulos;
+        this.status = status;
     }
 
 
@@ -70,8 +73,10 @@ public class Historia {
     @OneToMany(mappedBy = "historia", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Capitulo> capitulos = new ArrayList<>();
 
-    
+    @Enumerated(EnumType.STRING)
+    private Status status;
 
+    
 
 
     public UUID getId() {
@@ -153,6 +158,18 @@ public class Historia {
 
     public void setCapitulos(List<Capitulo> capitulos) {
         this.capitulos = capitulos;
+    }
+
+
+
+    public Status getStatus() {
+        return status;
+    }
+
+
+
+    public void setStatus(Status status) {
+        this.status = status;
     }
 
     
