@@ -25,7 +25,7 @@
 
         <section class="story-list">
             <div class="story-card" th:each="historia : ${historias}">
-                <h3 th:text="${historia.titulo}">Título da História</h3>
+                <a th:text="${historia.titulo}" th:href="@{/minha-historia/ler-capitulo/{id}(id=${historia.capitulos.get(0).id})}" ></a>
                 <p th:text="${historia.descricao}">Descrição da história...</p>
                 <small th:text="'Criado em: ' + ${#temporals.format(historia.dataCriacao, 'dd/MM/yyyy')}"></small>
                 <a class="btn" th:href="@{'/minha-historia/' + ${historia.id}}">Ver mais</a>

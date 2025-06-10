@@ -89,5 +89,12 @@ public class MinhaHistoriaController {
         return "minha-historia/continuar-escrevendo";
     }
 
+    @GetMapping("/ler-capitulo/{id}")
+    public String lerCapitulo(@PathVariable UUID id, Model model, @ModelAttribute CapituloRequestDto capituloRequestDto)
+    {
+        model.addAttribute("capitulo", historiaService.buscarCapituloPeloId(id));
+        return "minha-historia/ler-capitulo";
+    }
+
     
 }
