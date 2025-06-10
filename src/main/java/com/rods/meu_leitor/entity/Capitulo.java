@@ -54,9 +54,6 @@ public class Capitulo {
 
     @Enumerated(EnumType.STRING)
     private Status status;
-
-    
-
     
 
     public UUID getId() {
